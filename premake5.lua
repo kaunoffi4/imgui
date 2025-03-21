@@ -21,9 +21,20 @@ project "ImGui"
 	}
 
 	filter "system:windows"
-	systemversion "latest"
-	cppdialect "C++17"
-	staticruntime "on"
+		systemversion "latest"
+		cppdialect "C++17"
+		staticruntime "off"
 
-	filter { "system:windows", "configurations:Release" }
-	buildoptions "/MT"
+	filter "system:linux"
+		pic "On"
+		systemversion "latest"
+		cppdialect "C++17"
+		staticruntime "off"
+
+	filter "configurations:Debug"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		runtime "Release"
+		optimize "on"
